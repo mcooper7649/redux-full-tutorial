@@ -143,4 +143,73 @@ store.dispatch(increment());
 ## Next Lesson in Redux
 ---
 
-1. 
+1. Best practice is to add the store inside the indexjs then create seperate files for for our actions and reducers
+   1. lets start by creating two folders inisde the src, actions and reducers
+   2. next lets create index.js inside reducers
+   3. next lets create counter.js and isLogged.js inside reducers folder too
+
+2. For our counter.js reducer 
+   ```
+   const counterReducer = (state = 0, action){
+    switch(action.type){
+        case 'INCREMENT':
+            return state + 1
+        case 'DECREMENT':
+            return state - 1    
+    }   
+}
+
+export default counterReducer;
+```
+
+3. For your isLogged.js
+   ```
+   const loggedReducer = (state = false, action){
+    switch(action.type){
+        case 'SIGN_IN':
+            return !state;
+        
+    }   
+}
+
+export default loggedReducer;
+```
+
+4. Now we can createStore inside our index.js
+    1. import createStore
+    2. create store const   and assign to createStore()
+
+
+
+## How to pass two reducers at the same time into createstore!?!?
+---
+
+1. We can import the method 'combineReducers' from redux
+   1. ``import { createStore, combineReducers } from 'redux';``
+   2. but we want to keep our index.js clean so we will move that over to our index.js inside our reducers folder!!
+
+reducer folder index.js imports 
+```
+import counterReducer from "./counter";
+import loggedReducer from "./isLogged";
+import { combineReducers } from 'redux';
+
+```
+
+2. Now that we have our reducers combined into allReducer we can then import it into our index.js main file and when we call create store we can pass allReducer
+
+```
+import allReducer from './reducers'
+
+const store = createStore(allReducer);
+```
+
+3. When you save you may notice some errors in our reducer files
+   1. make sure to add a default case to our switch statement, we return state
+   2. make sure to add an arror after the arguments as its a function and needs to be syntactically correct
+
+## Installing the Redux DevTools Extension for Chrome
+--
+
+1. (Redux Extension Chrome Store)[https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=en]
+2. 
