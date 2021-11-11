@@ -227,9 +227,67 @@ const store = createStore(allReducers,
     2. Now we just need to wrap our App with the Provider to give it access to the STORE
 ```
 ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
     <App />
     </Provider>,
   document.getElementById('root')
 );
 ```
+
+## Prepare the APP.js file
+---
+
+1. import {useSelector} from 'react-redux'
+2. declare two consts counter and isLogged and set to useSelector
+```
+
+  const counter = useSelector(state => state.counter)
+  const isLogged = useSelector(state => state.isLogged)
+```
+3. Create an h1 tag that shows the value of our counter state
+
+4. Create a ternirary that will display an h3 with "valuable information" or "" an empty string  whether isLogged is true or false
+
+```
+<div className="App">
+      <h1>Counter {counter} </h1>
+      {isLogged ? <h3>Valueable Information I shouldn't See</h3> : '' }
+      
+    </div>
+```
+
+### How can we modify this counter?
+---
+
+1.Lets add some buttons first, + and -
+
+2.Create an action next, lets go to index.js inside actions folder
+```
+export const increment = () => {
+    return {
+        type: 'INCREMENT'
+    }
+};
+```
+3. Next we can import increment from actions inside our app.js file
+4. Import useDispatch next, we can add to the import of useSelector
+   ``import { useSelector, useDispatch } from 'react-redux'``
+
+5. now that we have the action setup we can import our action into app.js and add it as an onClick for our buttons.
+   ```
+        <button onClick={() => dispatch(increment(5))}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      ```
+6 Next we can modify our increment function on our actions index.
+    - we will pass a 2nd variable call 'nr' short for number
+    - and set it to action.payload
+```
+export const increment = (nr) => {
+    return {
+        type: 'INCREMENT',
+        payload: nr
+    }
+};
+```
+
+7. If we want to set a variable instead of just incrementing by 1 we can just add state + action.payload to our reducer counter.js
