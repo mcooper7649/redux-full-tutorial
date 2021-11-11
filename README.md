@@ -212,4 +212,24 @@ const store = createStore(allReducer);
 --
 
 1. (Redux Extension Chrome Store)[https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=en]
-2. 
+2. if your extension isn't working confirm you have your store setup like this.
+
+```
+const store = createStore(allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+```
+
+## Lets hook it up to our app now
+---
+
+1. import Provider inside our main index file
+    2. Now we just need to wrap our App with the Provider to give it access to the STORE
+```
+ReactDOM.render(
+    <Provider>
+    <App />
+    </Provider>,
+  document.getElementById('root')
+);
+```
