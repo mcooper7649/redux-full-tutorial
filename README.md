@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Redux_Full_Tutorial
+----
+
+1. What is Redux?
+   1.  Redux is a state manager package 
+
+2. Why Redux?
+   1. Typically in React we would have APP then we would have a component and sometimes we run a fetch for example to pull data into that component. Say we need that data to be accessessed elsewhere in our application. That would normally require us to lift the state back to the top level of our appication (if were not using Context in React) and then pass it back down via props.
+
+3. Store
+   1. Globalized State; Think of it as a seperate entity that your components can tap into
+
+4. Action
+   1. It describes what you want to do. Say for example we have an action that changes state on our app, maybe a counter that when a button is clicked this action increments by 1. This action would be increment
+
+5. Reducer
+    1. Describes how your actions transform your state into the next state
+6. Dispatch
+   1. Executes the action to the reducer. then the store gets updated.
+
+
+
+### Setup the code
+---
+
+1. If you haven't already 
+   1. npx create-react-app learn-redux
+   2. npm install to install our dependencies
+   3. npm install redux react-redux | both packages 
+   4. 
