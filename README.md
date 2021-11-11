@@ -99,4 +99,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
    1. npx create-react-app learn-redux
    2. npm install to install our dependencies
    3. npm install redux react-redux | both packages 
-   4. 
+
+2. import createStore into index.js
+   1. import { createStore }  from 'redux';
+3. Create the action
+   ```
+   //ACTION INCREMENT
+
+const increment = () => {
+  return {
+    type: 'INCREMENT'
+  }
+}
+
+const decrement = () => {
+  return {
+    type: 'DECREMENT'
+  }
+}
+```
+4. Create the reducer and set the store
+
+```
+const counter = (state = 0, action) => {
+  switch(action.type){
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+  }
+}
+
+let store = createStore(counter)
+```
+
+5. Dispatch increment to test
+   ```
+   //DISPATCH
+store.dispatch(increment());
+   ```
+
+
+## Next Lesson in Redux
+---
+
+1. 
